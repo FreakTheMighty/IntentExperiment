@@ -1,0 +1,4 @@
+scipy
+flask
+h5py
+requests

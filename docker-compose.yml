@@ -1,0 +1,12 @@
+corenlp:
+  image: motiz88/corenlp:3.6.0
+  ports:
+    - 9000:9000
+api:
+  build: .
+  ports:
+    - '5000:5000'
+  links:
+    - corenlp:corenlp      
+  volumes:
+    - .:/usr/src/app
