@@ -30,7 +30,6 @@ class Intent(object):
         self.threshold = threshold
 
     def match(self, content):
-        found = None
         match = False
         result = {"match": False, "slots": {}}
 
@@ -38,27 +37,26 @@ class Intent(object):
             matches = semregex(content, g)
             if matches["sentences"][0]["length"]:
                 found = matches["sentences"][0]["0"]
-                break;
 
-        if found:
-            for vocab in self.vocabs:
-                similar = True
-                for group_name, sample_word in zip(self.group_names, vocab):
-                    vocab_match = found[group_name]["text"]
-                    similarity = word_similarity(vocab_match, sample_word)
-                    
-                    print vocab_match, sample_word
-                    print similarity
-                    print "\n"
-                    result["slots"][group_name] = vocab_match
-                    if similarity > self.threshold:
-                        similar = False
-                    
-                if similar:
-                    result["match"] = True
-                    break;
-                else:
-                    result["slots"] = {}
+                if found:
+                    for vocab in self.vocabs:
+                        similar = True
+                        for group_name, sample_word in zip(self.group_names, vocab):
+                            vocab_match = found[group_name]["text"]
+                            similarity = word_similarity(vocab_match, sample_word)
+                            
+                            print vocab_match, sample_word
+                            print similarity
+                            print "\n"
+                            result["slots"][group_name] = vocab_match
+                            if similarity > self.threshold:
+                                similar = False
+                            
+                        if similar:
+                            result["match"] = True
+                            return result
+                        else:
+                            result["slots"] = {}
 
         return result;
 
@@ -77,7 +75,7 @@ def run():
     
     vocabs = [
             ["launch", "session", "monday"],
-            ["grab", "note", "monday"],
+            ["open", "session", "september"],
     ]
     intent = Intent(grammars, ["$command", "$object", "$time"], vocabs)
     return jsonify(intent.match(content))
