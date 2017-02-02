@@ -7,6 +7,7 @@
 
 `curl -G "http://192.168.99.100:5000" --data-urlencode "content=Grab the notes from yesterday"`
 
+Responds:
 
 ```json
 {
@@ -18,6 +19,8 @@
   }
 }
 ```
+
+## Overview
 
 This is an experiment in identifying intent and slots. 
 This combines a grammatical match with similarity comparison 
