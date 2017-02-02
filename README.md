@@ -43,8 +43,8 @@ grammars = [
 ]
 
 vocabs = [
-        ["launch", "session", "monday"],
-        ["grab", "note", "monday"],
+    ["launch", "session", "monday"],
+    ["open", "session", "september"]
 ]
 intent = Intent(grammars, ["$command", "$object", "$time"], vocabs)
 
