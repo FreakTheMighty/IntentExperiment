@@ -5,7 +5,9 @@
 
 `docker-compose up`
 
-`curl -G "http://192.168.99.100:5000" --data-urlencode "content=Grab the notes from yesterday"`
+```bash
+curl -G "http://192.168.99.100:5000" --data-urlencode "content=Grab the notes from yesterday"
+```
 
 Responds:
 
