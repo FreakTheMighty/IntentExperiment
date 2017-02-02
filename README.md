@@ -51,4 +51,6 @@ intent = Intent(grammars, ["$command", "$object", "$time"], vocabs)
 ```
 
 The intent is defined as a list of grammar rules and a list of sample slot words.
-A chunk of text is a match, if it matches any of the grammar rules, and if 
+A chunk of text is a match, if it matches any of the grammar rules, and the candidate
+slots are similar enough to the example words. "Similar enough" is defined as a fixed
+threshold for the cosine distance between the two words.
