@@ -56,8 +56,12 @@ intent = Intent(grammars, ["$command", "$object", "$time"], vocabs)
 We the run the intent like so:
 
 ```python
-print(intent.match("Launch the session for yesterday"))
+intent.match("Launch the session for yesterday")
+```
 
+Returns
+
+```json
 {
   "match": true, 
   "slots": {
