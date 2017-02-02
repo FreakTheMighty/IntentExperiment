@@ -74,8 +74,12 @@ def run():
         "{pos:/VB.*/}=command  >dobj {}=object  > /nmod:.*/ {}=time",
         "{pos:/VB.*/}=command  >dobj ({}=object  > /nmod:.*/ {}=time)"
     ]
-    vocabs = [["launch", "session", "monday"]]
-    intent = Intent(grammars, ["$command","$object", "$time"], vocabs)
+    
+    vocabs = [
+            ["launch", "session", "monday"],
+            ["grab", "note", "monday"],
+    ]
+    intent = Intent(grammars, ["$command", "$object", "$time"], vocabs)
     return jsonify(intent.match(content))
 
 if __name__ == '__main__':

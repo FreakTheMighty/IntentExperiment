@@ -1,3 +1,8 @@
+"""
+Converts pre-trained word embedding from stanford into hdf5 file.
+
+http://nlp.stanford.edu/projects/glove/
+"""
 import sys
 import h5py
 import hashlib
@@ -11,8 +16,6 @@ for p in sys.argv[1:]:
             key = line[0]
             vec = np.array(map(lambda e: float(e), line[1:]))
             normalized = hashlib.md5(key).hexdigest()
-            #import pdb; pdb.set_trace();
-            print key, normalized
             f.create_dataset(normalized, data=vec)
     f.close();
 
